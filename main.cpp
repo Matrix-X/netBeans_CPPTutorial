@@ -39,6 +39,17 @@ const double PI = 3.14159;
  */
 int main(int argc, char** argv) {
 
+    std::vector<int> vectRandNums(2);
+    vectRandNums[0] = 10;
+    vectRandNums[1] = 20;
+    vectRandNums.push_back(30);
+    
+    std::cout   << "last Index at "<< vectRandNums.size()-1 
+                << ":  " 
+                << vectRandNums[vectRandNums.size()-1] 
+                << std::endl;
+
+    std::string sSentence = "this is a random string";
     
 
 
