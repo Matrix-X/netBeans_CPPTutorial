@@ -30,20 +30,43 @@ int g_iRandNum = 0;
 const double PI = 3.14159;
 
 
+// cannot edit in read only editor
+// code-runner.runInTerminal to true from your File -> Preferences -> Settings
+
 /*
  * args : arguments count
  * argv : point to whole bunch of arguments value
  */
 int main(int argc, char** argv) {
+
     
+
+
+//    -------------------------------------------------------
     
-    std::string sMiles;
-    double dMiles, dKilometers;
-    std::cout << "Enter Miles : ";
-    getline(std::cin, sMiles);
-    dMiles = std::stod(sMiles);
-    dKilometers = dMiles * 1.60934;
-    printf("%.1f miles equals %.4f kilometers \n",dMiles, dKilometers);
+    // int arrayNums[10] = {1};
+    // int arrayNums2[] = {1,2,3};
+
+    // int arrayNums3[5] = {8,9};
+
+    // // std::cout << "1st Value : " << arrayNums[0] << std::endl;
+    // std::cout << "1st Value : " << arrayNums3[0] << std::endl;
+    // arrayNums3[0] = 7;
+    // std::cout << "1st Value : " << arrayNums3[0] << std::endl;
+    // std::cout << "Array size : " << sizeof(arrayNums3)/ sizeof(*arrayNums3) << std::endl;
+
+    // int arrayNums4[2][2][2] = {{{1,2}, {3,4}}, {{5,6}, {7,8}}};
+    // std::cout << arrayNums4[1][1][1] << std::endl;
+
+//    -------------------------------------------------------
+
+    // std::string sMiles;
+    // double dMiles, dKilometers;
+    // std::cout << "Enter Miles : ";
+    // getline(std::cin, sMiles);
+    // dMiles = std::stod(sMiles);
+    // dKilometers = dMiles * 1.60934;
+    // printf("%.1f miles equals %.4f kilometers \n",dMiles, dKilometers);
     
     
 //    -------------------------------------------------------

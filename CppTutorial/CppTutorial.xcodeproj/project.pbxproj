@@ -1,0 +1,88 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXFileReference section */
+		60FCBF1E2212C225006B97C8 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = Makefile; path = ../Makefile; sourceTree = "<group>"; };
+		60FCBF1F2212C225006B97C8 /* build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = build; path = ../build; sourceTree = "<group>"; };
+		60FCBF202212C225006B97C8 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dist; path = ../dist; sourceTree = "<group>"; };
+		60FCBF212212C225006B97C8 /* main */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = main; path = ../main; sourceTree = "<group>"; };
+		60FCBF222212C225006B97C8 /* CppTutorial */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CppTutorial; sourceTree = "<group>"; };
+		60FCBF232212C225006B97C8 /* nbproject */ = {isa = PBXFileReference; lastKnownFileType = folder; name = nbproject; path = ../nbproject; sourceTree = "<group>"; };
+		60FCBF242212C225006B97C8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		60FCBF252212C225006B97C8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
+		60FCBF262212C225006B97C8 /* a.out */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = a.out; path = ../a.out; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		60FCBF012212C218006B97C8 = {
+			isa = PBXGroup;
+			children = (
+				60FCBF262212C225006B97C8 /* a.out */,
+				60FCBF1F2212C225006B97C8 /* build */,
+				60FCBF222212C225006B97C8 /* CppTutorial */,
+				60FCBF202212C225006B97C8 /* dist */,
+				60FCBF212212C225006B97C8 /* main */,
+				60FCBF252212C225006B97C8 /* main.cpp */,
+				60FCBF1E2212C225006B97C8 /* Makefile */,
+				60FCBF232212C225006B97C8 /* nbproject */,
+				60FCBF242212C225006B97C8 /* README.md */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		60FCBF022212C218006B97C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+			};
+			buildConfigurationList = 60FCBF052212C218006B97C8 /* Build configuration list for PBXProject "CppTutorial" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 60FCBF012212C218006B97C8;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		60FCBF062212C218006B97C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		60FCBF072212C218006B97C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60FCBF052212C218006B97C8 /* Build configuration list for PBXProject "CppTutorial" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60FCBF062212C218006B97C8 /* Debug */,
+				60FCBF072212C218006B97C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 60FCBF022212C218006B97C8 /* Project object */;
+}

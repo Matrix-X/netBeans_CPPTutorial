@@ -1,0 +1,152 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXFileReference section */
+		60FCBEEC2212C1E8006B97C8 /* Makefile-variables.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Makefile-variables.mk"; sourceTree = "<group>"; };
+		60FCBEED2212C1E8006B97C8 /* Makefile-impl.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Makefile-impl.mk"; sourceTree = "<group>"; };
+		60FCBEEE2212C1E8006B97C8 /* Package-Release.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "Package-Release.bash"; sourceTree = "<group>"; };
+		60FCBEEF2212C1E8006B97C8 /* Makefile-Debug.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Makefile-Debug.mk"; sourceTree = "<group>"; };
+		60FCBEF02212C1E8006B97C8 /* Package-Debug.bash */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "Package-Debug.bash"; sourceTree = "<group>"; };
+		60FCBEF12212C1E8006B97C8 /* project.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = project.xml; sourceTree = "<group>"; };
+		60FCBEF22212C1E8006B97C8 /* private */ = {isa = PBXFileReference; lastKnownFileType = folder; path = private; sourceTree = "<group>"; };
+		60FCBEF32212C1E8006B97C8 /* configurations.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = configurations.xml; sourceTree = "<group>"; };
+		60FCBEF42212C1E8006B97C8 /* Makefile-Release.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Makefile-Release.mk"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		60FCBEE62212C1E8006B97C8 = {
+			isa = PBXGroup;
+			children = (
+				60FCBEEC2212C1E8006B97C8 /* Makefile-variables.mk */,
+				60FCBEED2212C1E8006B97C8 /* Makefile-impl.mk */,
+				60FCBEEE2212C1E8006B97C8 /* Package-Release.bash */,
+				60FCBEEF2212C1E8006B97C8 /* Makefile-Debug.mk */,
+				60FCBEF02212C1E8006B97C8 /* Package-Debug.bash */,
+				60FCBEF12212C1E8006B97C8 /* project.xml */,
+				60FCBEF22212C1E8006B97C8 /* private */,
+				60FCBEF32212C1E8006B97C8 /* configurations.xml */,
+				60FCBEF42212C1E8006B97C8 /* Makefile-Release.mk */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		60FCBEEB2212C1E8006B97C8 /* nbproject */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 60FCBEF52212C1E8006B97C8 /* Build configuration list for PBXLegacyTarget "nbproject" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Library/WebServer/Documents/C/netBeans/CppTutorial/nbproject;
+			dependencies = (
+			);
+			name = nbproject;
+			passBuildSettingsInEnvironment = 1;
+			productName = nbproject;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		60FCBEE72212C1E8006B97C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 60FCBEEA2212C1E8006B97C8 /* Build configuration list for PBXProject "nbproject" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 60FCBEE62212C1E8006B97C8;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60FCBEEB2212C1E8006B97C8 /* nbproject */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		60FCBEE82212C1E8006B97C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		60FCBEE92212C1E8006B97C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		60FCBEF62212C1E8006B97C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = nbproject;
+			};
+			name = Debug;
+		};
+		60FCBEF72212C1E8006B97C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = nbproject;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60FCBEEA2212C1E8006B97C8 /* Build configuration list for PBXProject "nbproject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60FCBEE82212C1E8006B97C8 /* Debug */,
+				60FCBEE92212C1E8006B97C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60FCBEF52212C1E8006B97C8 /* Build configuration list for PBXLegacyTarget "nbproject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60FCBEF62212C1E8006B97C8 /* Debug */,
+				60FCBEF72212C1E8006B97C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 60FCBEE72212C1E8006B97C8 /* Project object */;
+}
