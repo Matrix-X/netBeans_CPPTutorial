@@ -37,6 +37,23 @@ const double PI = 3.14159;
 int main(int argc, char** argv) {
 
 //    -------------------------------------------------------
+    
+//    double dbBigFloat = 1.11111111111111111111;
+//    double dbBigFloat2 = 1.1111111111;
+//    double dbDoubleSum = dbBigFloat + dbBigFloat2;
+//    printf("dbDoubleSum Precision : %.20f\n", dbDoubleSum);
+//    printf("%c %d %5d %.3f %s \n", 'A', 10, 5, 3.1234, "Hi");
+    
+//    -------------------------------------------------------
+
+//    // this shows only 5 precision
+//    float fBigFloat = 1.1111111111;
+//    float fBigFloat2 = 1.1111111111;
+//    float fFloatSum = fBigFloat + fBigFloat2;
+//    printf("fFloatSum Precision : %.10f\n", fFloatSum);
+    
+    
+//    -------------------------------------------------------
 
 //    bool bMarried = true;
 //    char chMyGrade = 'A';
