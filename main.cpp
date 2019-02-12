@@ -21,6 +21,7 @@
 #include <vector>   // resizable arrays
 #include <sstream>  // manipulate strings
 #include <limits>   
+#include <numeric>
 
 //using namespace std;
 // using std::cout;
@@ -29,6 +30,9 @@
 int g_iRandNum = 0;
 const double PI = 3.14159;
 
+double AddNumbers(double num1, double num2);
+void AssignAge(int age);
+int AssignAge2();
 
 // cannot edit in read only editor
 // code-runner.runInTerminal to true from your File -> Preferences -> Settings
@@ -39,36 +43,72 @@ const double PI = 3.14159;
  */
 int main(int argc, char** argv) {
 
-    double dbNum1 = 0, dbNum2 = 0;
-    std::string sCalc = "";
-    std::vector<std::string> vectCalc;
     
-    std::cout << "Enter calculation (ex. 5 + 6) : ";
-    getline(std::cin, sCalc);
-    std::stringstream ss(sCalc);
-    std::string sIndivStr;
-    char cSpace = ' ';
 
-    while(getline(ss, sIndivStr, cSpace)){
-        vectCalc.push_back(sIndivStr);
-    }
 
-    dbNum1 = std::stoi(vectCalc[0]);
-    dbNum2 = std::stoi(vectCalc[2]);
+//    -------------------------------------------------------
 
-    std::string operation = vectCalc[1];
+    // std::vector<int> myVec2(10);
+    // std::iota(std::begin(myVec2), std::end(myVec2), 1);
 
-    if(operation == "+"){
-        printf("%.1f + %.1f = %.1f \n", dbNum1, dbNum2, dbNum1+dbNum2);
-    }else if(operation == "-"){
-        printf("%.1f - %.1f = %.1f \n", dbNum1, dbNum2, dbNum1-dbNum2);
-    }else if(operation == "*"){
-        printf("%.1f * %.1f = %.1f \n", dbNum1, dbNum2, dbNum1*dbNum2);
-    }else if(operation == "/"){
-        printf("%.1f / %.1f = %.1f \n", dbNum1, dbNum2, dbNum1/dbNum2);
-    }else{
-        std::cout << "Please enter only +. -, *, /\n";
-    }
+    // for(auto y:myVec2) {
+    //     if(y%2==0){
+    //         std::cout << y << std::endl;
+    //     }    
+    // }
+
+//    -------------------------------------------------------
+
+    // std::vector<int> myVec(10);
+    // std::iota(std::begin(myVec), std::end(myVec), 0);
+
+    // for(int i=0; i < myVec.size(); ++i){
+    //     std::cout << myVec[i] << "\n";
+    // }
+
+    // for(auto y:myVec) std::cout << y << std::endl;
+
+    // int val = 8;
+    // if((val % 2) == 0){
+    //     std::cout << val << " is even\n";
+    // }else{
+    //     std::cout << val << " is odd\n";
+    // }
+
+
+
+//    -------------------------------------------------------
+
+    // double dbNum1 = 0, dbNum2 = 0;
+    // std::string sCalc = "";
+    // std::vector<std::string> vectCalc;
+    
+    // std::cout << "Enter calculation (ex. 5 + 6) : ";
+    // getline(std::cin, sCalc);
+    // std::stringstream ss(sCalc);
+    // std::string sIndivStr;
+    // char cSpace = ' ';
+
+    // while(getline(ss, sIndivStr, cSpace)){
+    //     vectCalc.push_back(sIndivStr);
+    // }
+
+    // dbNum1 = std::stoi(vectCalc[0]);
+    // dbNum2 = std::stoi(vectCalc[2]);
+
+    // std::string operation = vectCalc[1];
+
+    // if(operation == "+"){
+    //     printf("%.1f + %.1f = %.1f \n", dbNum1, dbNum2, dbNum1+dbNum2);
+    // }else if(operation == "-"){
+    //     printf("%.1f - %.1f = %.1f \n", dbNum1, dbNum2, dbNum1-dbNum2);
+    // }else if(operation == "*"){
+    //     printf("%.1f * %.1f = %.1f \n", dbNum1, dbNum2, dbNum1*dbNum2);
+    // }else if(operation == "/"){
+    //     printf("%.1f / %.1f = %.1f \n", dbNum1, dbNum2, dbNum1/dbNum2);
+    // }else{
+    //     std::cout << "Please enter only +. -, *, /\n";
+    // }
 
 //    -------------------------------------------------------
 
@@ -223,7 +263,46 @@ int main(int argc, char** argv) {
     
 //    -------------------------------------------------------
     
+
+
+
+    // double num1, num2;
+    // std::cout << "Enter Num 1 : ";
+    // std::cin >> num1;
+    // std::cout << "Enter Num 2 : ";
+    // std::cin >> num2;
+
+    // printf("%.1f + %.1f = %.1f \n", num1, num2, AddNumbers(num1, num2));
     
+    int age = 43;
+    AssignAge(age);
+    std::cout << "new age " << age << std::endl;
+
+    age = AssignAge2();
+    std::cout << "returned age " << age << std::endl;
     return 0;
 }
 
+
+
+// FUNCTIONS
+
+double AddNumbers(double num1,  double num2){
+    return num1 + num2;
+}
+
+
+void AssignName(){
+    std::string name = "Derek";
+}
+
+
+void AssignAge(int age){
+    age = 24;
+}
+
+int AssignAge2(){
+    int age = 24;
+    return age;
+}
+// END FUNCTIONS
