@@ -33,6 +33,9 @@ const double PI = 3.14159;
 double AddNumbers(double num1, double num2);
 void AssignAge(int age);
 int AssignAge2();
+void AssignAge3(int* pAge);
+void DoubleArray(int* arr, int size);
+std::vector<int> Range(int start, int max, int step);
 
 // cannot edit in read only editor
 // code-runner.runInTerminal to true from your File -> Preferences -> Settings
@@ -273,19 +276,84 @@ int main(int argc, char** argv) {
     // std::cin >> num2;
 
     // printf("%.1f + %.1f = %.1f \n", num1, num2, AddNumbers(num1, num2));
-    
-    int age = 43;
-    AssignAge(age);
-    std::cout << "new age " << age << std::endl;
 
-    age = AssignAge2();
-    std::cout << "returned age " << age << std::endl;
+//    -------------------------------------------------------    
+    // int age = 43;
+    // AssignAge(age);
+    // std::cout << "new age " << age << std::endl;
+
+    // age = AssignAge2();
+    // std::cout << "returned age " << age << std::endl;
+    
+ //    -------------------------------------------------------    
+
+    // int age = 43;
+    // int* pAge = NULL;
+
+    // pAge = &age;
+
+    // std::cout << "Address : " << pAge << std::endl;
+    // std::cout << "Value at Address : " << *pAge << std::endl;
+
+    // int intArray[] = {1,2,3,4};
+    // int* pIntArray = intArray;
+
+    // std::cout << "1st " << *pIntArray << "Address " << pIntArray << std::endl;
+    // pIntArray++;
+
+    // std::cout << "2nd " << *pIntArray << "Address " << pIntArray << std::endl;
+    // pIntArray--;
+
+    // std::cout << "1st " << *pIntArray << "Address " << pIntArray << std::endl;
+
+//    -------------------------------------------------------    
+    // int age = 43;
+    // AssignAge3(&age);
+    // std::cout << "Pointer Age "  << age << std::endl;
+
+//    -------------------------------------------------------    
+    // int arrayInt[] = {1,2,3,4};
+    // DoubleArray(arrayInt, 4);
+    // for(int i=0; i<4; i++){
+    //     std::cout << "Array " << arrayInt[i] << std::endl;
+    // }
+
+//    -------------------------------------------------------    
+
+    // std::vector<int> range = Range(1, 10, 2);
+    // for(auto y: range) {
+    //     std::cout << y << std::endl;
+    // }
+
+//    -------------------------------------------------------    
+
+    // double investment = 0.0, interestRate = 0.0;
+    // std::cout << "How much to invest : ";
+    // std::cin >> investment;
+
+    // std::cout << "Interest Rate: ";
+    // std::cin >> interestRate;
+
+    // interestRate *= .01;
+    // for(auto y: Range(1, 10, 1)){
+    //     investment += (investment * interestRate);
+    // }
+    // std::cout << "Value after 10 years : " << investment << "\n";
+
+
+//    -------------------------------------------------------    
+
+
+
+//    -------------------------------------------------------    
     return 0;
 }
 
 
 
 // FUNCTIONS
+
+
 
 double AddNumbers(double num1,  double num2){
     return num1 + num2;
@@ -305,4 +373,31 @@ int AssignAge2(){
     int age = 24;
     return age;
 }
+
+void AssignAge3(int* pAge){
+    
+    *pAge = 22;
+
+}
+
+void DoubleArray(int* arr, int size){
+    for(int i=0; i< size; i++){
+        arr[i] = arr[i]*2;
+    }
+}
+
+std::vector<int> Range(int start, int max, int step){
+    int i = start;
+
+
+    std::vector<int> range;
+
+    while(i<max){
+        range.push_back(i);
+        i += step;
+    }
+    return range;
+}
+
+
 // END FUNCTIONS
