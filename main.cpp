@@ -22,6 +22,7 @@
 #include <sstream>  // manipulate strings
 #include <limits>   
 #include <numeric>
+#include <ctime>
 
 //using namespace std;
 // using std::cout;
@@ -36,6 +37,8 @@ int AssignAge2();
 void AssignAge3(int* pAge);
 void DoubleArray(int* arr, int size);
 std::vector<int> Range(int start, int max, int step);
+std::vector<std::string> StringToVector(std::string theString, char separator);
+std::string VectorToString(std::vector<std::string> & vect, char separator);
 
 // cannot edit in read only editor
 // code-runner.runInTerminal to true from your File -> Preferences -> Settings
@@ -343,15 +346,219 @@ int main(int argc, char** argv) {
 
 //    -------------------------------------------------------    
 
+    // int i = 1;
+    // while(i <= 20){
+    //     if((i%2)==0){
+    //         i += 1;
+    //         continue;
+    //     }
 
+    //     if(i==15){
+    //         break;
+    //     }
+    //     std::cout << i << "\n";
+
+        
+    //     i +=1;
+    // }
 
 //    -------------------------------------------------------    
+
+    // int treeHeight = 0, spaces = 0, hashes = 1, stumpSpaces = 0;
+    // std::cout << "How tall is the tree: ";
+    // std::cin >> treeHeight;
+
+    // spaces = treeHeight - 1;
+    // stumpSpaces = treeHeight - 1;
+
+    // while(treeHeight!=0){
+    //     for(auto x: Range(1, spaces, 1))
+    //         std::cout << " ";
+        
+    //     for(auto x: Range(1, hashes, 1))
+    //         std::cout << "#";
+        
+    //     std::cout << "\n";
+        
+    //     spaces-=1;
+    //     hashes+=2;
+    //     treeHeight--;
+    // }
+    // for(auto x: Range(1, stumpSpaces, 1))
+    //         std::cout << " ";
+    // std::cout << "#" << std::endl;
+
+//    -------------------------------------------------------    
+
+    // double num1 = 0, num2 = 0;
+    // std::cout << "Enter number 1: ";
+    // std::cin >> num1;
+    // std::cout << "Enter number 2: ";
+    // std::cin >> num2;
+
+    // try{
+    //     if(num2 == 0){
+    //         throw "Division by zero is not possible";
+    //     }else{
+    //         printf("%.1f / %.1f = %.2f", num1, num2, (num1 / num2));
+    //     }
+    // }
+    // catch(const char* exp){
+    //     std::cout << "Error : " << exp << "\n";
+    // }
+    
+
+//    -------------------------------------------------------   
+    // try{
+    //     std::cout << "Throwing exception \n";
+    //     throw std::runtime_error("error occurred");
+    //     std::cout << "Can you print me? \n";
+    // }
+    // catch(std::exception &exp){
+    //     std::cout << "Handle Exception : " << exp.what() << std::endl;
+    // }
+    // catch(...){
+    //     std::cout << "Default Exception\n";
+    // }
+
+
+//    -------------------------------------------------------   
+// srand(time(NULL));
+// int secreteNum = std::rand() % 11;
+// int guess = 0;
+
+// do{
+//     std::cout << "Guess the number : ";
+//     std::cin >> guess;
+//     if(guess > secreteNum) std::cout << "To Big\n";
+//     if(guess < secreteNum) std::cout << "To Small\n";
+// }while(secreteNum != guess);
+
+// std::cout << "you guessed it \n ";
+
+
+//    ------------------------------------------------------- 
+// char cSting[] = {'A', ' ', 'S', 't', 'r', 'i', 'n', 'g', '\0'};
+
+// std::cout << "Array String: " << cSting << std::endl;
+// std::cout << "Array Size: " << sizeof(cSting) << std::endl;
+
+    // std::vector<std::string> strVect(10);
+    // std::string str("I'm a string");
+    // strVect[0] = str;
+
+    // std::cout << str[0] << str.at(0) << str.front() << str.back() << std::endl;
+    // std::cout << str.length() << std::endl;
+    // std::string str2(str);
+    // strVect[1] = str2;
+    // std::string str3(str, 4);
+    // strVect[2] = str3;
+    // std::string str4(5, 'x');
+    // strVect[3] = str4;
+    // strVect[4] = str.append(" and your not");
+    // str += " and your not";
+    // str.append(str, 34, 37);
+    // strVect[5] = str;
+    // str.erase(13, str.length()-1);
+    // strVect[6] = str;
+
+    // std::cout << &str << ": " << str << "\n" << std::endl;
+
+    // if(str.find("string") != std::string::npos){
+    //     std::cout << "1st index " << str.find("string") << std::endl;
+    // }
+    // std::cout << "Substr " << str.substr(6,6) << std::endl;
+
+    // for(int i=0; i<10; i++)
+    //     std::cout << &strVect[i] << ": " << strVect[i] << std::endl;
+    // std::cout << "\n";
+    // for(auto y: strVect){
+    //     std::cout << &y << ": " << y << std::endl;
+        
+    // }
+
+    // reverse(str.begin(), str.end());
+    // std::cout << "Reverse " << str << "\n";
+    // transform(str2.begin(), str2.end(), str2.begin(), ::toupper);
+    // std::cout << "Upper " << str2 << "\n";
+    // transform(str2.begin(), str2.end(), str2.begin(), ::tolower);
+    // std::cout << "Lower " << str2 << "\n";
+
+//    -------------------------------------------------------   
+
+    // // a - z : 97 - 122
+    // // A - Z : 65 - 90
+    // std::string normalStr, secretStr = "";
+    // std::cout << "Enter your string in uppercase : ";
+    // std::cin >> normalStr;
+
+    // for(char c: normalStr){
+    //     secretStr += std::to_string( (int)c - 23 );
+    // }
+
+    // std::cout << "Secret: " << secretStr << std::endl;
+
+    // normalStr  = "";
+    // for(int i = 0; i < secretStr.length(); i+=2){
+    //     std::string sCharCode = "";
+    //     sCharCode += secretStr[i];
+    //     sCharCode += secretStr[i+1];
+        
+    //     int nCharCode = std::stoi(sCharCode);
+    //     char chCharCode = nCharCode + 23;
+    //     normalStr += chCharCode;
+    // }
+    // std::cout << "Original: " << normalStr << std::endl;
+
+
+
+//    -------------------------------------------------------   
+
+    // std::vector<std::string> vec = StringToVector("This is a random string", ' ');
+    // for(int i =0 ;i < vec.size(); i++){
+    //     std::cout << vec[i] << std::endl;
+    // }
+
+    // std::vector<std::string> vCusts(3);
+    // vCusts[0] = "Bob";
+    // vCusts[1] = "Sue";
+    // vCusts[2] = "Tom";
+
+    // std::string sCusts = VectorToString(vCusts, ' ');
+    // std::cout << sCusts << std::endl;
+
+
+//    -------------------------------------------------------   
+
+//    -------------------------------------------------------    
+
+
     return 0;
 }
 
 
 
 // FUNCTIONS
+
+std::vector<std::string> StringToVector(std::string theString, char separator){
+    std::vector<std::string> vectWords;
+
+    std::stringstream ss(theString);
+    std::string sIndivStr;
+    while(getline(ss, sIndivStr, separator)){
+        vectWords.push_back(sIndivStr);
+    }
+
+    return vectWords;
+}
+
+ std::string VectorToString(std::vector<std::string> & vect, char separator){
+     std::string theString = "";
+     for(auto cust: vect){
+         theString += cust + separator;
+     }
+    return theString;
+ }
 
 
 
@@ -392,12 +599,14 @@ std::vector<int> Range(int start, int max, int step){
 
     std::vector<int> range;
 
-    while(i<max){
+    while(i<=max){
         range.push_back(i);
         i += step;
     }
     return range;
 }
+
+
 
 
 // END FUNCTIONS
