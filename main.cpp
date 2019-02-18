@@ -23,6 +23,7 @@
 #include <limits>   
 #include <numeric>
 #include <ctime>
+#include <cmath>
 
 //using namespace std;
 // using std::cout;
@@ -50,6 +51,15 @@ void SolveForX(std::string equation);
 std::vector<int> GenerateRandVect(int numOfNums, int min, int max);
 
 void BubbleSort(std::vector<int>& theVect);
+
+int Factorial(int number);
+int SigmaNumber(int number);
+int Fib(int index);
+
+void PrintHorzVector(std::vector<int>& theVect);
+
+double Area(double radius);
+double Area(double height, double width);
 
 // cannot edit in read only editor
 // code-runner.runInTerminal to true from your File -> Preferences -> Settings
@@ -578,16 +588,64 @@ int main(int argc, char** argv) {
 
 //    -------------------------------------------------------   
 
-    // Bubble sort
-    std::vector<int> vecVals = GenerateRandVect(10, 1, 50);
-    BubbleSort(vecVals);
-    for(auto x: vecVals){
-        std::cout << x << std::endl;
+    // // Bubble sort
+    // std::vector<int> vecVals = GenerateRandVect(10, 1, 50);
+    // BubbleSort(vecVals);
+    // for(auto x: vecVals){
+    //     std::cout << x << std::endl;
+    // }
+
+//    -------------------------------------------------------   
+
+    // int number = 10000;
+    // int sigTotal = SigmaNumber(number);
+    // printf("number:%d 's sigma number is : %d \n", number, sigTotal );
+
+    // std::cout << "Factorial 3 = " << Factorial(6) << std::endl;
+
+    // std::vector<int> theVect = {10,8,2,5,9,11,6,14};
+    // PrintHorzVector(theVect);
+
+    // int index;
+    // std::cout << "Get Fibonacci Index : ";
+    // std::cin >> index;
+
+    // printf("Fib(%d) = %d \n", index, Fib(index));
+
+
+//    -------------------------------------------------------   
+    std::cout << "Area Cicle (c) or Rectangle (r) : ";
+    char areaType;
+    std::cin >> areaType;
+
+    switch (areaType)
+    {
+        case 'c':
+            /* code */
+            std::cout << "Enter Radius : ";
+            double radius;
+
+            std::cin >> radius;
+            std::cout << "Area = " << Area(radius) << std::endl;
+
+            break;
+
+        case 'r':
+            /* code */
+            std::cout << "Enter Height : ";
+            double height, width;
+            std::cin >> height;
+            std::cout << "Enter Witdh : ";
+            std::cin >> width;
+            std::cout << "Area = " << Area(height, width) << std::endl;
+
+            break;
+    
+        default:
+        /* code */
+            std::cout << "Please Enter c or r \n : ";
+        
     }
-
-//    -------------------------------------------------------   
-
-//    -------------------------------------------------------   
 
 //    -------------------------------------------------------   
 
@@ -602,6 +660,76 @@ int main(int argc, char** argv) {
 
 
 // FUNCTIONS
+
+
+double Area(double radius){
+    return 3.14159 * std::pow(radius, 2);
+}
+double Area(double height, double width){
+    return width * height;
+}
+
+
+
+// Fibonacci 波那契数列 这个数列从第3项开始，每一项都等于前两项之和。
+int Fib(int index){
+    if(index < 2){
+        return index;
+    }else{
+        return Fib(index -1) + Fib(index-2);
+    }
+}
+
+
+void PrintHorzVector(std::vector<int>& theVect){
+    int dashes = std::ceil(theVect.size() * 6);
+    printf("dashes count:%d", dashes);
+
+    for(int n = 0; n<dashes; n++){
+        std::cout << "-";
+    }
+    std::cout << "\n";
+
+    for(int n = 0; n<theVect.size(); n++){
+        printf("| %2d", n);
+    }
+    std::cout << "|\n";
+
+    for(int n = 0; n<dashes; n++){
+        std::cout << "-";
+    }
+    std::cout << "\n";
+
+    for(int n = 0; n<theVect.size(); n++){
+        printf("| %2d", theVect[n]);
+    }
+    std::cout << "|\n";
+
+    for(int n = 0; n<dashes; n++){
+        std::cout << "-";
+    }
+    std::cout << "\n";
+
+
+
+
+}
+
+// 阶乘 n!
+int Factorial(int number){
+    if(number == 1){
+        return 1;
+    }else{
+        int result = number *  Factorial(number - 1);
+        return result;
+    }
+}
+
+// 累加公式
+int SigmaNumber(int number){
+    return number * (number +1) / 2;
+}
+
 void BubbleSort(std::vector<int>& theVect){
     int i = theVect.size() - 1;
 
