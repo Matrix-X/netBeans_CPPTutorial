@@ -40,6 +40,16 @@ std::vector<int> Range(int start, int max, int step);
 std::vector<std::string> StringToVector(std::string theString, char separator);
 std::string VectorToString(std::vector<std::string> & vect, char separator);
 
+std::string CaesarCipher(std::string theString, int key, bool encrypt);
+
+bool IsPrime(int num);
+std::vector<int> GetPrimes(int maxNum);
+
+void SolveForX(std::string equation);
+
+std::vector<int> GenerateRandVect(int numOfNums, int min, int max);
+
+
 // cannot edit in read only editor
 // code-runner.runInTerminal to true from your File -> Preferences -> Settings
 
@@ -530,7 +540,52 @@ int main(int argc, char** argv) {
 
 //    -------------------------------------------------------   
 
-//    -------------------------------------------------------    
+    // std::string theString = "Make me secret";
+    // std::string encryptedStr = CaesarCipher(theString, 5, true);
+    // std::string decryptedString = CaesarCipher(encryptedStr, 5, false);
+    // std::cout << "Encrypted " << encryptedStr << std::endl;
+    // std::cout << "Decrypted " << decryptedString << std::endl;
+
+//    -------------------------------------------------------   
+    // std::cout << "Enter an equation to solve ";
+    // std::string equation = "";
+    // getline(std::cin, equation);
+    // SolveForX(equation);
+
+//    -------------------------------------------------------   
+
+    // int num = 0;
+    // std::cout << "Number to Check : ";
+    // std::cin >> num;
+
+    // std::cout.setf(std::ios::boolalpha);
+    // std::cout << "Is " << num << " Prime " << IsPrime(num) << std::endl;
+    // std::cout << "Generate Primes up to ";
+    // int maxPrime;
+    // std::cin >> maxPrime;
+    // std::vector<int> primeList = GetPrimes(maxPrime);
+    // for(auto x: primeList)
+    //     std::cout << x << "\n";
+
+    
+    std::vector<int> vecVals = GenerateRandVect(10, 5, 50);
+    for(auto x: vecVals){
+        std::cout << x << "\n";
+    }
+
+
+
+//    -------------------------------------------------------   
+
+//    -------------------------------------------------------   
+
+//    -------------------------------------------------------   
+
+//    -------------------------------------------------------   
+
+//    -------------------------------------------------------   
+
+//    -------------------------------------------------------   
 
 
     return 0;
@@ -539,6 +594,100 @@ int main(int argc, char** argv) {
 
 
 // FUNCTIONS
+
+
+std::vector<int> GenerateRandVect(int numOfNums, int min, int max){
+    std::vector<int> vecValues;
+    srand(time(NULL));
+
+    int i = 0, randVal =0;
+    while(i<numOfNums){
+        randVal = min + std::rand() %  ((max + 1) - min);
+        vecValues.push_back(randVal);
+        
+        i++;
+    }
+
+    return vecValues;
+
+}
+
+bool IsPrime(int num){
+    for(auto n:Range(2, num-1, 1)){
+        if(num%n==0){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+std::vector<int> GetPrimes(int maxNum){
+    std::vector<int> vectPrimes;
+    for(auto x: Range(2, maxNum, 1)){
+        if(IsPrime(x)){
+            vectPrimes.push_back(x);
+        }
+    }
+    return vectPrimes;
+}
+
+
+void SolveForX(std::string equation){
+    std::vector<std::string> vectEquation = StringToVector(equation, ' ');
+    int num1 = std::stoi(vectEquation[2]);
+    int num2 = std::stoi(vectEquation[4]);
+    int xVal = num2 - num1;
+    std::cout << "x = " << xVal << "\n";
+}
+
+std::string CaesarCipher(std::string theString, int key, bool encrypt)
+{
+    std::string returnString = "";
+
+    int charCode = 0;
+
+    char letter;
+    if(encrypt){
+        key = key * -1;
+    }
+
+    
+    for(char& c: theString){
+        
+        if(isalpha(c)){
+            // std::cout << "input " << c << std::endl;
+            charCode = (int)c;
+            charCode += key;
+
+            if(isupper(c)){
+                
+                if(charCode > (int)'Z'){
+                    charCode -= 26;
+                }else if(charCode < (int)'A'){
+                    charCode += 26;
+                }
+            }else{
+                if(charCode > (int)'z'){
+                    charCode -= 26;
+                }else if(charCode < (int)'a'){
+                    charCode += 26;
+                }
+            }
+            letter = charCode;
+            returnString += letter;
+
+            // std::cout << "output " << charCode << std::endl;
+        }else{
+            // std::cout << "not alpha " << charCode << std::endl;
+            letter = c;
+            returnString += c;
+        }
+    }
+
+    return returnString;
+
+}
 
 std::vector<std::string> StringToVector(std::string theString, char separator){
     std::vector<std::string> vectWords;
