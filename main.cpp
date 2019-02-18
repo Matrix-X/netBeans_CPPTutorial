@@ -49,6 +49,7 @@ void SolveForX(std::string equation);
 
 std::vector<int> GenerateRandVect(int numOfNums, int min, int max);
 
+void BubbleSort(std::vector<int>& theVect);
 
 // cannot edit in read only editor
 // code-runner.runInTerminal to true from your File -> Preferences -> Settings
@@ -568,14 +569,21 @@ int main(int argc, char** argv) {
     //     std::cout << x << "\n";
 
     
-    std::vector<int> vecVals = GenerateRandVect(10, 5, 50);
-    for(auto x: vecVals){
-        std::cout << x << "\n";
-    }
+    // std::vector<int> vecVals = GenerateRandVect(10, 5, 50);
+    // for(auto x: vecVals){
+    //     std::cout << x << "\n";
+    // }
 
 
 
 //    -------------------------------------------------------   
+
+    // Bubble sort
+    std::vector<int> vecVals = GenerateRandVect(10, 1, 50);
+    BubbleSort(vecVals);
+    for(auto x: vecVals){
+        std::cout << x << std::endl;
+    }
 
 //    -------------------------------------------------------   
 
@@ -594,6 +602,33 @@ int main(int argc, char** argv) {
 
 
 // FUNCTIONS
+void BubbleSort(std::vector<int>& theVect){
+    int i = theVect.size() - 1;
+
+    while(i >= 1){
+        int j = 0;
+        while(j<i){
+            printf("\nIS %d:%d > %d:%d\n", j, theVect[j], j+1, theVect[j+1]);
+
+            if(theVect[j] >= theVect[j+1]){
+                std::cout << "Switch\n";
+
+                int temp = theVect[j];
+                theVect[j] = theVect[j+1];
+                theVect[j+1] = temp;
+            }else{
+                std::cout << "Don't Switch\n";
+            }
+            j += 1;
+
+            for(auto k: theVect){
+                std::cout << k << ", ";
+            }
+        }
+        std::cout << "\nEnd of round\n";
+        i -= 1;
+    }
+}
 
 
 std::vector<int> GenerateRandVect(int numOfNums, int min, int max){
