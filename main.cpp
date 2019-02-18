@@ -55,6 +55,7 @@ void BubbleSort(std::vector<int>& theVect);
 int Factorial(int number);
 int SigmaNumber(int number);
 int Fib(int index);
+std::vector<int> GenerateFibList(int maxNums);
 
 void PrintHorzVector(std::vector<int>& theVect);
 
@@ -64,13 +65,132 @@ double Area(double height, double width);
 // cannot edit in read only editor
 // code-runner.runInTerminal to true from your File -> Preferences -> Settings
 
+
+class Animal{
+private:
+    // which shoulld be change by methods
+    std::string name;
+    int height;
+    int weight;
+    
+
+    // this is shared by any object of animal that is ever created
+    static int numOfAnimals;
+
+
+public:
+
+    std::string GetName(){return name;}
+    void SetName(std::string animalName){ name = animalName; }
+
+    int GetHeight(){return height;}
+    void SetHeight(int cm){ height = cm; }
+
+    int GetWeight(){return weight;}
+    void SetWeight(int km){ weight = km; }
+    
+    void SetAll(std::string, double, double);
+    Animal( std::string , double, double);
+    Animal();
+    ~Animal();
+    static int GetNumOfAnimals(){
+        return numOfAnimals;
+    }
+    void ToString();
+    
+
+    void GetFamily(){ std::cout << "We are animals" << std::endl; }
+    virtual void GetClass(){ std::cout << "I'm an Animal " << std::endl; }
+
+
+    // void setAll(int, int , string );
+
+    
+};
+
+int Animal::numOfAnimals = 0;
+void Animal::SetAll(std::string name, double height, double weight){
+    this->height = height;
+	this->weight = weight;
+	this->name = name;
+	Animal::numOfAnimals++;
+}
+Animal::Animal(std::string name, double height, double weight){
+	this->height = height;
+	this->weight = weight;
+	this->name = name;
+	Animal::numOfAnimals++;
+}
+Animal::Animal(){
+    this->height = 0;
+	this->weight = 0;
+	this->name = "";
+	Animal::numOfAnimals++;
+}
+Animal::~Animal(){
+	std::cout << "Animal " << this->name << " destoried" << '\n';
+}
+void Animal::ToString(){
+	std::cout << this->name << " is " << this->height
+	<< "cms tall and " << this->weight << "kgs in weight" <<  '\n';
+}
+
+
+class Dog : public Animal{
+private:
+	std::string sound = "Woof";
+
+public:
+    void MakeSound(){
+        std::cout << "The dog " << this->GetName() << " says " << this->sound << std::endl;
+    }
+	void GetSound() {std::cout << sound << '\n';}
+	void GetClass(){ std::cout << "I'm a dog" << std::endl; }
+
+	Dog(std::string, int, int,  std::string);
+	Dog() : Animal(){};
+	void ToString();
+};
+
+Dog::Dog(std::string name, int height, int weight,  std::string bark) : Animal( name,height, weight){
+	this->sound = bark;
+}
+void Dog::ToString(){
+	std::cout << this->GetName() << " is " << this->GetHeight()
+	<< "cms tall and " << this->GetWeight() << "kgs in weight and says "
+	<< this->sound <<  '\n';
+}
+
+
+class GermanShepard : public Dog{
+public:
+		void getClass(){ std::cout << "I'm a German Shepard" << '\n';}
+		void getDerived(){ std::cout << "I'm a Animal and Dog" << '\n';}
+};
+
+
 /*
  * args : arguments count
  * argv : point to whole bunch of arguments value
  */
 int main(int argc, char** argv) {
 
-    
+    // Animal fred;
+    // fred.ToString();
+    // fred.SetHeight(33);
+    // fred.SetWeight(10);
+    // fred.SetName("Fred");
+    // fred.ToString();
+    // Animal tom("tom", 36, 15);
+    // tom.ToString();
+    // Dog spot("spot", 38, 16, "Wooooof");
+    // spot.ToString();
+
+    // std::cout << "Number of Animals " << Animal::GetNumOfAnimals() << std::endl;
+
+
+
+
 
 
 //    -------------------------------------------------------
@@ -614,44 +734,116 @@ int main(int argc, char** argv) {
 
 
 //    -------------------------------------------------------   
-    std::cout << "Area Cicle (c) or Rectangle (r) : ";
-    char areaType;
-    std::cin >> areaType;
+    // std::cout << "Area Cicle (c) or Rectangle (r) : ";
+    // char areaType;
+    // std::cin >> areaType;
 
-    switch (areaType)
-    {
-        case 'c':
-            /* code */
-            std::cout << "Enter Radius : ";
-            double radius;
+    // switch (areaType)
+    // {
+    //     case 'c':
+    //         /* code */
+    //         std::cout << "Enter Radius : ";
+    //         double radius;
 
-            std::cin >> radius;
-            std::cout << "Area = " << Area(radius) << std::endl;
+    //         std::cin >> radius;
+    //         std::cout << "Area = " << Area(radius) << std::endl;
 
-            break;
+    //         break;
 
-        case 'r':
-            /* code */
-            std::cout << "Enter Height : ";
-            double height, width;
-            std::cin >> height;
-            std::cout << "Enter Witdh : ";
-            std::cin >> width;
-            std::cout << "Area = " << Area(height, width) << std::endl;
+    //     case 'r':
+    //         /* code */
+    //         std::cout << "Enter Height : ";
+    //         double height, width;
+    //         std::cin >> height;
+    //         std::cout << "Enter Witdh : ";
+    //         std::cin >> width;
+    //         std::cout << "Area = " << Area(height, width) << std::endl;
 
-            break;
+    //         break;
     
-        default:
-        /* code */
-            std::cout << "Please Enter c or r \n : ";
+    //     default:
+    //     /* code */
+    //         std::cout << "Please Enter c or r \n : ";
         
-    }
+    // }
+
+//    -------------------------------------------------------   
+    // std::vector<int> vectVals = GenerateRandVect(10, 1, 50);
+
+    // for(auto val: vectVals)
+    //         std::cout << val << "\n";
+    // std::cout << "after sort:" << "\n";
+
+    // // std::sort(vectVals.begin(), vectVals.end(), [](int x, int y){return x < y;});
+
+    // std::vector<int> evenVectVals;
+    // std::copy_if(vectVals.begin(), vectVals.end(), 
+    //             std::back_inserter(evenVectVals), 
+    //             [](int x){return x%2;});
+
+    // // for(auto val: vectVals)
+    // //     std::cout << val << "\n";
+    // for(auto val: evenVectVals)
+    //     std::cout << val << "\n";
+
+    
+    // int sum = 0;
+    // std::for_each(vectVals.begin(), vectVals.end(), [&](int x){sum += x;});
+    // std::cout << "Sum " << sum << std::endl;
+
+    // int divisor;
+    // std::vector<int> vecVals2;
+    // std::cout << "List of Values Divisable by : ";
+    // std::cin >> divisor;
+    // std::copy_if(vectVals.begin(), vectVals.end(), 
+    //             std::back_inserter(vecVals2), 
+    //             [divisor](int x){return x%divisor==0;});
+    // for(auto val: vecVals2)
+    //         std::cout << val << "\n";
+
+
+
+    // std::vector<double> doubleVec;
+    // std::for_each(vectVals.begin(), vectVals.end(), [&](int x){doubleVec.push_back(x*2);});
+    // for(auto val: doubleVec)
+    //     std::cout << val << "\n";
+
+    // std::vector<int> vec1 = {1,2,3,4,5};
+    // std::vector<int> vec2 = {1,2,3,4,5};
+    // std::vector<int> vec3(5);
+    // transform(vec1.begin(), vec1.end(), vec2.begin(), vec3.begin(), [](int x, int y){return x + y;});
+    // for(auto val: vec3)
+    //     std::cout << val << "\n";
+
+    // int age  = 43;
+    // bool canIVote = (age  >= 18 ) ? true : false;
+    // std::cout.setf(std::ios::boolalpha);
+    // std::cout << "Can Derek Vote: " << canIVote << std::endl;
+
+    // std::function<int(int)> Fib = [&Fib](int n) {return n < 2 ? n : Fib(n-1) + Fib(n-2);};
+    // std::cout << "Fib 4 : " << Fib(4) << std::endl;
+
+    // std::vector<int> listOfFibs = GenerateFibList(10);
+    // for(auto val: listOfFibs)
+    //     std::cout << val << std::endl;
+
+
+
+//    -------------------------------------------------------   
+
+
+
 
 //    -------------------------------------------------------   
 
 //    -------------------------------------------------------   
 
 //    -------------------------------------------------------   
+
+//    -------------------------------------------------------  
+
+//    -------------------------------------------------------   
+
 
 
     return 0;
@@ -661,6 +853,19 @@ int main(int argc, char** argv) {
 
 // FUNCTIONS
 
+std::vector<int> GenerateFibList(int maxNums){
+    std::vector<int> listOfFibs;
+
+    int i  = 0;
+
+    std::function<int(int)> Fib = [&Fib](int n) {return n < 2 ? n : Fib(n-1) + Fib(n-2);};
+    while(i < maxNums){
+        listOfFibs.push_back(Fib(i));
+        i++;
+    }
+    return listOfFibs;
+    
+}
 
 double Area(double radius){
     return 3.14159 * std::pow(radius, 2);
