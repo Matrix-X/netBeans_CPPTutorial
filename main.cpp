@@ -432,9 +432,58 @@ public:
 
 // ------------------------------------------------------------------------------------
 
+double MultyBy2(double num){
+    return num * 2;
+}
+
+double MultyBy3(double num){
+    return num * 3;
+}
 
 
+double DoMath(std::function<double(double)> func, double num){
+    return func(num);
+}
 
+// ------------------------------------------------------------------------------------
+
+bool IsItOdd(int num){
+    return num%2 ==0 ? false : true;
+}
+
+std::vector<int> ChangeList(std::vector<int> list, std::function<bool(int)> func){
+    std::vector<int> oddList;
+    for(auto i: list){
+        if(func(i)){
+            oddList.push_back(i);
+        }
+    }
+    return oddList;
+}
+
+
+std::vector<char> GetHAndTList(std::vector<char> possibleValues, int numberValuesToGenerate){
+    srand(time(NULL));
+    std::vector<char> hAndTList;
+
+    for(int x =0; x < numberValuesToGenerate; ++x){
+        int randIndex = rand()%2;
+        hAndTList.push_back(possibleValues[randIndex]);
+
+    }
+    return hAndTList;
+}
+
+
+int GetNumberOfMatches(std::vector<char> list, char valueToFind){
+    int numOfMatches = 0;
+    for(char c: list){
+        if(c==valueToFind){
+            numOfMatches++;
+        }
+    }
+    return numOfMatches;
+}
 
 // ------------------------------------------------------------------------------------
 
@@ -443,45 +492,73 @@ public:
  * argv : point to whole bunch of arguments value
  */
 int main(int argc, char** argv) {
+//    -------------------------------------------------------
+
 
 //    -------------------------------------------------------
-    std::ofstream writeToFile;
-    std::ifstream readFromFile;
-    std::string txtToWrite = "";
-    std::string txtFromFile = "";
+    std::vector<char> possibleValues{'H', 'T'};
+    std::vector<char> hAndTList = GetHAndTList(possibleValues, 100);
+    std::cout << "Number of heads : " << GetNumberOfMatches(hAndTList, 'H') << std::endl;
+    std::cout << "Number of heads : " << GetNumberOfMatches(hAndTList, 'T') << std::endl;
 
-    writeToFile.open("test.txt", std::ios_base::out | std::ios_base::trunc);
-    if(writeToFile.is_open()){
-        writeToFile << "Beginning of File \n";
-        std::cout << "Enter data to write : ";
-        getline(std::cin, txtToWrite);
-        writeToFile << txtToWrite;
-        writeToFile.close();
-    }
+//    -------------------------------------------------------
+    // std::vector<int> listOfNums {1,2,3,4,5};
+    // std::vector<int> oddList = ChangeList(listOfNums, IsItOdd);
+    // std::cout << "List of Odds \n";
+    // for(auto i: oddList){
+    //     std::cout << i << std::endl;
+    // }
 
-    readFromFile.open("test.txt", std::ios_base::in);
-    if(readFromFile.is_open()){
-        while(readFromFile.good()){
-            getline(readFromFile, txtFromFile);
-            std::cout << txtFromFile << std::endl;
+//    -------------------------------------------------------
+    // auto times2 = MultyBy2;
+    // std::cout << "5 * 2 = " <<
+    //     times2(5) << std::endl;
+    // std::cout << "6 * 2 = " <<
+    //     DoMath(times2, 6) << std::endl;
+    // std::vector<std::function<double(double)>> funcs(2);
+    // funcs[0] = MultyBy2;
+    // funcs[1] = MultyBy3;
+    // std::cout << "2 * 10 = " << funcs[0](10) << std::endl;
+    // std::cout << "3 * 10 = " << funcs[1](10) << std::endl;
 
-            std::vector<std::string> vect = StringToVector(txtFromFile, ' ');
-            int wordsInLine = vect.size();
-            std::cout << "Words in line : " << wordsInLine << "\n";
-            int charCount = 0;
-            for(auto word: vect){
-                for(auto letter: word){
-                    charCount++;
-                }
-            }
-            int avgNumChars = charCount/wordsInLine;
-            std::cout<< "Avg Word length : " <<
-                    avgNumChars << std::endl;
+//    -------------------------------------------------------
+    // std::ofstream writeToFile;
+    // std::ifstream readFromFile;
+    // std::string txtToWrite = "";
+    // std::string txtFromFile = "";
+
+    // writeToFile.open("test.txt", std::ios_base::out | std::ios_base::trunc);
+    // if(writeToFile.is_open()){
+    //     writeToFile << "Beginning of File \n";
+    //     std::cout << "Enter data to write : ";
+    //     getline(std::cin, txtToWrite);
+    //     writeToFile << txtToWrite;
+    //     writeToFile.close();
+    // }
+
+    // readFromFile.open("test.txt", std::ios_base::in);
+    // if(readFromFile.is_open()){
+    //     while(readFromFile.good()){
+    //         getline(readFromFile, txtFromFile);
+    //         std::cout << txtFromFile << std::endl;
+
+    //         std::vector<std::string> vect = StringToVector(txtFromFile, ' ');
+    //         int wordsInLine = vect.size();
+    //         std::cout << "Words in line : " << wordsInLine << "\n";
+    //         int charCount = 0;
+    //         for(auto word: vect){
+    //             for(auto letter: word){
+    //                 charCount++;
+    //             }
+    //         }
+    //         int avgNumChars = charCount/wordsInLine;
+    //         std::cout<< "Avg Word length : " <<
+    //                 avgNumChars << std::endl;
 
 
-        }
-        readFromFile.close();
-    }
+    //     }
+    //     readFromFile.close();
+    // }
 
 
 //    -------------------------------------------------------
