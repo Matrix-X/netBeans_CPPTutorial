@@ -247,9 +247,88 @@ public:
 };
 
 
+// ------------------------------------------------------------------------------------
 
+// struct Shape{
+//     double length, width;
+//     Shape(double l = 1, double w = 1){
+//         length = l;
+//         width = w;
+//     }
 
+//     double Area(){
+//         return length * width;
+//     }
 
+// private:
+//     int id;
+
+// };
+
+// struct Circle : Shape{
+//     Circle(double width){
+//         this->width = width;
+//     }
+//     double Area(){
+//         return 3.14159 * std::pow((width /2), 2);
+//     }
+// };
+
+// ------------------------------------------------------------------------------------
+
+class Customer{
+private:
+    friend class GetCustomerData;
+    std::string name;
+
+public:
+    Customer(std::string name){
+        this->name = name;
+    }
+};
+
+class GetCustomerData{
+public:
+    static std::string GetName(Customer& customer){
+        return customer.name;
+    }
+};
+
+// ------------------------------------------------------------------------------------
+// 多态性
+class Shape{
+protected:
+    double height;
+    double width;
+
+public:
+    Shape(double length){
+        height = length;
+        width = length;
+    }
+    Shape(double h, double w){
+        height = h;
+        width = w;
+    }
+    virtual double Area(){
+        return height * width;
+    }
+
+};
+
+class Circle : public Shape{
+public:
+    Circle(double w) : Shape(w){
+        
+    }
+    double Area(){
+        return 3.14159 * std::pow((width /2), 2);
+    }
+};
+
+void ShowArea(Shape& shape){
+    std::cout << "Area : " << shape.Area() << "\n";
+};
 
 // ------------------------------------------------------------------------------------
 
@@ -259,11 +338,48 @@ public:
  */
 int main(int argc, char** argv) {
 
-    srand(time(NULL));
-    Warrior thor("thor", 100, 30, 15);
-    Warrior hulk("Hulk", 135, 25, 10);
+//    -------------------------------------------------------
 
-    Battle::StartFight(thor, hulk);
+
+//    -------------------------------------------------------
+
+
+//    -------------------------------------------------------
+
+    Shape square(10, 5);
+    Circle circle(10);
+    ShowArea(square);
+    ShowArea(circle);
+
+
+//    -------------------------------------------------------
+
+    // Customer tom("tom");
+    // GetCustomerData getName;
+    // std::cout << "Name : " << getName.GetName(tom) << std::endl;
+
+//    -------------------------------------------------------
+    // Shape shape(10, 10);
+    // std::cout << "Square Area : " << shape.Area() << std::endl;
+
+    // Circle circle(10);
+    // std::cout << "Circle Area : " << circle.Area() << std::endl;
+    
+    // Shape rectangle(10, 15);
+    // std::cout << "Rectangle Area : " << rectangle.Area() << std::endl;
+
+
+//    -------------------------------------------------------
+
+
+
+    // srand(time(NULL));
+    // Warrior thor("thor", 100, 30, 15);
+    // Warrior hulk("Hulk", 135, 25, 10);
+
+    // Battle::StartFight(thor, hulk);
+
+
 
     // Animal fred;
     // fred.ToString();
