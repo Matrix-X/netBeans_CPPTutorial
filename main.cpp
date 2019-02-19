@@ -297,34 +297,45 @@ public:
 // ------------------------------------------------------------------------------------
 // 多态性
 class Shape{
-protected:
-    double height;
-    double width;
-
 public:
-    Shape(double length){
-        height = length;
-        width = length;
-    }
-    Shape(double h, double w){
-        height = h;
-        width = w;
-    }
-    virtual double Area(){
-        return height * width;
-    }
+    virtual double Area() = 0;
 
 };
 
 class Circle : public Shape{
+protected:
+    double width;
 public:
-    Circle(double w) : Shape(w){
-        
+    Circle(double w){
+        width = w;
     }
-    double Area(){
+    double Area() override{
         return 3.14159 * std::pow((width /2), 2);
     }
 };
+
+class Rectangle : public Shape{
+protected:
+    double height, width;
+public:
+    Rectangle(double h, double w){
+        height = h;
+        width = w;
+    }
+    double Area() override final{
+        return height * width;
+    }
+};
+
+// class Square : public Rectangle{
+// public:
+//     Square(double h, double w) : Rectangle(h, w){
+
+//     }
+//     double Area() override{
+//         return height * 2;
+//     }
+// };
 
 void ShowArea(Shape& shape){
     std::cout << "Area : " << shape.Area() << "\n";
@@ -346,10 +357,15 @@ int main(int argc, char** argv) {
 
 //    -------------------------------------------------------
 
-    Shape square(10, 5);
+    Rectangle rectangle(10,5);
     Circle circle(10);
-    ShowArea(square);
+    ShowArea(rectangle);
     ShowArea(circle);
+
+    // Shape square(10, 5);
+    // Circle circle(10);
+    // ShowArea(square);
+    // ShowArea(circle);
 
 
 //    -------------------------------------------------------
