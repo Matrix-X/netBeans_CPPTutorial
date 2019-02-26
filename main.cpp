@@ -26,6 +26,9 @@
 #include <cmath>
 #include <fstream>
 
+#include <thread>
+#include <mutex>
+
 #include <iterator>
 
 #include "Animal.h"
@@ -578,6 +581,70 @@ public:
 
 // ------------------------------------------------------------------------------------
 
+int GetRandom(int max){
+    srand(time(NULL));
+    return rand() % max;
+}
+void ExecuteThread(int id){
+    auto nowTime = std::chrono::system_clock::now();
+    std::time_t sleepTime = std::chrono::system_clock::to_time_t(nowTime);
+    tm myLocalTime = *localtime(&sleepTime);
+
+    std::cout << "Thread " << id << " Sleep Time : " << std::ctime(&sleepTime) << std::endl;
+    std::cout << "Month : " << myLocalTime.tm_mon << "\n";
+    std::cout << "Day : " << myLocalTime.tm_mday << "\n";
+    std::cout << "Year : " << myLocalTime.tm_year + 1900 << "\n";
+    std::cout << "Hours : " << myLocalTime.tm_hour << "\n";
+    std::cout << "Minutes : " << myLocalTime.tm_min << "\n";
+    std::cout << "Seconds : " << myLocalTime.tm_sec << "\n";
+
+    std::this_thread::sleep_for(std::chrono::seconds(GetRandom(3)));
+    nowTime = std::chrono::system_clock::now();
+    sleepTime = std::chrono::system_clock::to_time_t(nowTime);
+    std::cout << "Thread " << id << " Awake Time : " << std::ctime(&sleepTime) << std::endl;
+
+
+}
+
+std::string GetTime(){
+    auto nowTime = std::chrono::system_clock::now();
+    std::time_t sleepTime = std::chrono::system_clock::to_time_t(nowTime);
+    return std::ctime(&sleepTime);
+}
+
+double acctBalance = 100;
+std::mutex acctLock;
+void GetMoney(int id , double withdrawal){
+    std::lock_guard<std::mutex> lock(acctLock);
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+    std::cout << id << " tries to withdrawal $" << withdrawal << " on " << GetTime() << std::endl;
+
+    if((acctBalance - withdrawal) >= 0){
+        acctBalance -= withdrawal;
+        std::cout <<"New Account Balance is $" << acctBalance << std::endl;
+    }else{
+        std::cout << "Not Enough Money in Account \n";
+        std::cout << "Current Balance is $" << acctBalance << std::endl;
+    }
+}
+
+void FindPrimes(unsigned int start, unsigned int end, std::vector<unsigned int>& vect){
+    for(unsigned int x = start; x <= end; x +=2){
+        for(unsigned int y = 2; y < x; y ++){
+            if((x %y)==0){
+                break;
+            }else if((y+1)==x){
+                vect.push_back(x);
+            }
+        }
+    }
+}
+
+// ------------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------------
+
+
 /*
  * args : arguments count
  * argv : point to whole bunch of arguments value
@@ -586,13 +653,40 @@ int main(int argc, char** argv) {
 //    -------------------------------------------------------
 
 //    -------------------------------------------------------
-    std::vector<std::unique_ptr<Pizza>> pizzaOrders;
-    pizzaOrders.emplace_back(new MeatNYStyle<LotsOfMeat<NYStyleCrust>>());
-    pizzaOrders.emplace_back(new VeganDeepDish<Vegan<DeepDishCrust>>());
 
-    for(auto &pizza: pizzaOrders){
-        pizza->MakePizza();
-    }
+//    -------------------------------------------------------
+    std::vector<unsigned int> primeVect;
+    int startTime = clock();
+    FindPrimes(1, 100000, primeVect);
+    for(auto i: primeVect)
+        std::cout << i << "\n";
+
+    int endTime = clock();
+    std::cout << "Execute Time : " << (endTime - startTime)/double(CLOCKS_PER_SEC)
+        << std::endl;
+//    -------------------------------------------------------
+    // std::thread threads[10];
+    // for(int i = 0; i < 10; i++){
+    //     threads[i] = std::thread(GetMoney, i, 15);
+    // }
+
+    // for(int i = 0; i < 10; i++){
+    //     threads[i].join();
+    // }
+
+    // std::thread th1(ExecuteThread, 1);
+    // th1.join();
+    // std::thread th2(ExecuteThread, 2);
+    // th2.join();
+
+//    -------------------------------------------------------
+    // std::vector<std::unique_ptr<Pizza>> pizzaOrders;
+    // pizzaOrders.emplace_back(new MeatNYStyle<LotsOfMeat<NYStyleCrust>>());
+    // pizzaOrders.emplace_back(new VeganDeepDish<Vegan<DeepDishCrust>>());
+
+    // for(auto &pizza: pizzaOrders){
+    //     pizza->MakePizza();
+    // }
 
 //    -------------------------------------------------------
     // int amtToStore;
