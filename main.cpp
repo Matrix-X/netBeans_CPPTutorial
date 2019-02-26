@@ -493,6 +493,23 @@ int GetNumberOfMatches(std::vector<char> list, char valueToFind){
 }
 
 // ------------------------------------------------------------------------------------
+    template<typename T>
+    void Times2(T val){
+        std::cout << val << " * 2 = " << val*2 << std::endl;
+    }
+    template<typename T>
+    T Add(T val, T val2){
+        return val + val2;
+    }
+    template<typename T>
+    T Max(T val, T val2){
+        return val > val2 ? val : val2;
+    }
+// ------------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------------
 
 /*
  * args : arguments count
@@ -505,6 +522,16 @@ int main(int argc, char** argv) {
 
 //    -------------------------------------------------------
     // std::cout << "Cicle Area : " << AREA_CICLE(5) << std::endl;
+
+    // Times2(5);
+    // Times2(5.3);
+
+    std::cout << "5 + 4 = " << Add(5,4) << std::endl;
+    std::cout << "5.5 + 4.6 = " << Add(5.5,4.6) << std::endl;
+    std::cout << "Max 4 or 8 = " << Max(4,8) << std::endl;
+    std::cout << "Max A or B = " << Max('A', 'B') << std::endl;
+    std::cout << "Max Dog or Cat = " << Max("Dog","Cat") << std::endl;
+
 
 //    -------------------------------------------------------
 
