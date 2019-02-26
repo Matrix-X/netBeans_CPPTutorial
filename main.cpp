@@ -524,6 +524,57 @@ class Person{
 template<typename T, typename U> int Person<T, U> :: numOfPeople;
 
 // ------------------------------------------------------------------------------------
+class Pizza{
+public:
+    virtual void MakePizza() = 0;
+    virtual ~Pizza() = 0;
+
+};
+Pizza::~Pizza() {};
+class NYStyleCrust{
+    public:
+    std::string AddIngredient(){
+        return "Crust so thin you can see through it \n\n";
+    }
+};
+class DeepDishCrust{
+    public:
+    std::string AddIngredient(){
+        return "Super Awesome Chicago Deep Dish \n\n";
+    }
+};
+
+template <typename T>
+class LotsOfMeat: public T {
+public:
+    std::string AddIngredient(){
+        return "Lots of Random Meat, " + T::AddIngredient();
+    }
+};
+
+template <typename T>
+class Vegan: public T {
+public:
+    std::string AddIngredient(){
+        return "Vegan Cheese, Veggies, " + T::AddIngredient();
+    }
+};
+
+template <typename T>
+class MeatNYStyle: public T, public Pizza{
+public:
+    void MakePizza(){
+        std::cout << "Meat NY style Pizza : " << T::AddIngredient();
+    }
+};
+
+template <typename T>
+class VeganDeepDish: public T, public Pizza{
+public:
+    void MakePizza(){
+        std::cout << "Vegan Deep Dish : " << T::AddIngredient();
+    }
+};
 
 // ------------------------------------------------------------------------------------
 
@@ -533,31 +584,65 @@ template<typename T, typename U> int Person<T, U> :: numOfPeople;
  */
 int main(int argc, char** argv) {
 //    -------------------------------------------------------
-    std::vector<int> nums2 = {1,2,3,4};
-    std::vector<int>::iterator itr;
-    for(itr = nums2.begin();
-        itr < nums2.end();
-        itr++){
-            std::cout << *itr <<"\n";
+
+//    -------------------------------------------------------
+    std::vector<std::unique_ptr<Pizza>> pizzaOrders;
+    pizzaOrders.emplace_back(new MeatNYStyle<LotsOfMeat<NYStyleCrust>>());
+    pizzaOrders.emplace_back(new VeganDeepDish<Vegan<DeepDishCrust>>());
+
+    for(auto &pizza: pizzaOrders){
+        pizza->MakePizza();
     }
 
-    std::vector<int>::iterator itr2 = nums2.begin();
-    advance(itr2, 2);
-    std::cout << *itr2 << std::endl;
+//    -------------------------------------------------------
+    // int amtToStore;
+    // std::cout << "How many numbers do you want to store: ";
+    // std::cin >> amtToStore;
 
-    auto itr3 = next(itr2, 1);
-    std::cout << *itr3 << std::endl;
+    // int * pNums;
+    // pNums = (int *) malloc(amtToStore * sizeof(int));
+    // if(pNums != NULL){
+    //     int i = 0;
+    //     while(i < amtToStore){
+    //         std::cout << "Enter a number : ";
+    //         std::cin >> pNums[i];
+    //         i++;
+    //     }
+    // }
+    // std::cout << "You entered these numbers\n";
+    // for(int i=0 ; i < amtToStore; i++){
+    //     std::cout << pNums[i] << "\n";
+    // }
+    // delete pNums;
 
-    auto itr4 = prev(itr2, 1);
-    std::cout << *itr4 << std::endl;
 
-    std::vector<int> nums3  = {1,4,5,6};
-    std::vector<int> nums4  = {2,3};
-    auto itr5  = nums3.begin();
-    advance(itr5, 1);
-    copy(nums4.begin(), nums4.end(), inserter(nums3, itr5));
-    for(int &i: nums3)
-        std::cout << i << std::endl;
+//    -------------------------------------------------------
+    // std::vector<int> nums2 = {1,2,3,4};
+    // std::vector<int>::iterator itr;
+    // for(itr = nums2.begin();
+    //     itr < nums2.end();
+    //     itr++){
+    //         std::cout << *itr <<"\n";
+    // }
+
+    // std::vector<int>::iterator itr2 = nums2.begin();
+    // advance(itr2, 2);
+    // std::cout << *itr2 << std::endl;
+
+    // auto itr3 = next(itr2, 1);
+    // std::cout << *itr3 << std::endl;
+
+    // auto itr4 = prev(itr2, 1);
+    // std::cout << *itr4 << std::endl;
+
+    // std::vector<int> nums3  = {1,4,5,6};
+    // std::vector<int> nums4  = {2,3};
+    // auto itr5  = nums3.begin();
+    // advance(itr5, 1);
+    // copy(nums4.begin(), nums4.end(), inserter(nums3, itr5));
+    // for(int &i: nums3)
+    //     std::cout << i << std::endl;
+    
 
 //    -------------------------------------------------------
     // Person<double, int> mikeTyson(5.83, 216);
