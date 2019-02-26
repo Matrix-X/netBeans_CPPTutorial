@@ -26,12 +26,19 @@
 #include <cmath>
 #include <fstream>
 
+#include <iterator>
+
+#include "Animal.h"
+
+#define PI 3.14159
+#define AREA_CICLE(radius)(PI * (std::pow(radius, 2)))
+
 //using namespace std;
 // using std::cout;
 
 // global Vars
 int g_iRandNum = 0;
-const double PI = 3.14159;
+// const double PI = 3.14159;
 
 double AddNumbers(double num1, double num2);
 void AssignAge(int age);
@@ -73,107 +80,107 @@ double Area(double height, double width);
 // ------------------------------------------------------------------------------------
 
 
-class Animal{
-private:
-    // which shoulld be change by methods
-    std::string name;
-    int height;
-    int weight;
+// class Animal{
+// private:
+//     // which shoulld be change by methods
+//     std::string name;
+//     int height;
+//     int weight;
     
 
-    // this is shared by any object of animal that is ever created
-    static int numOfAnimals;
+//     // this is shared by any object of animal that is ever created
+//     static int numOfAnimals;
 
 
-public:
+// public:
 
-    std::string GetName(){return name;}
-    void SetName(std::string animalName){ name = animalName; }
+//     std::string GetName(){return name;}
+//     void SetName(std::string animalName){ name = animalName; }
 
-    int GetHeight(){return height;}
-    void SetHeight(int cm){ height = cm; }
+//     int GetHeight(){return height;}
+//     void SetHeight(int cm){ height = cm; }
 
-    int GetWeight(){return weight;}
-    void SetWeight(int km){ weight = km; }
+//     int GetWeight(){return weight;}
+//     void SetWeight(int km){ weight = km; }
     
-    void SetAll(std::string, double, double);
-    Animal( std::string , double, double);
-    Animal();
-    ~Animal();
-    static int GetNumOfAnimals(){
-        return numOfAnimals;
-    }
-    void ToString();
+//     void SetAll(std::string, double, double);
+//     Animal( std::string , double, double);
+//     Animal();
+//     ~Animal();
+//     static int GetNumOfAnimals(){
+//         return numOfAnimals;
+//     }
+//     void ToString();
     
 
-    void GetFamily(){ std::cout << "We are animals" << std::endl; }
-    virtual void GetClass(){ std::cout << "I'm an Animal " << std::endl; }
+//     void GetFamily(){ std::cout << "We are animals" << std::endl; }
+//     virtual void GetClass(){ std::cout << "I'm an Animal " << std::endl; }
 
 
-    // void setAll(int, int , string );
+//     // void setAll(int, int , string );
 
     
-};
+// };
 
-int Animal::numOfAnimals = 0;
-void Animal::SetAll(std::string name, double height, double weight){
-    this->height = height;
-	this->weight = weight;
-	this->name = name;
-	Animal::numOfAnimals++;
-}
-Animal::Animal(std::string name, double height, double weight){
-	this->height = height;
-	this->weight = weight;
-	this->name = name;
-	Animal::numOfAnimals++;
-}
-Animal::Animal(){
-    this->height = 0;
-	this->weight = 0;
-	this->name = "";
-	Animal::numOfAnimals++;
-}
-Animal::~Animal(){
-	std::cout << "Animal " << this->name << " destoried" << '\n';
-}
-void Animal::ToString(){
-	std::cout << this->name << " is " << this->height
-	<< "cms tall and " << this->weight << "kgs in weight" <<  '\n';
-}
-
-
-class Dog : public Animal{
-private:
-	std::string sound = "Woof";
-
-public:
-    void MakeSound(){
-        std::cout << "The dog " << this->GetName() << " says " << this->sound << std::endl;
-    }
-	void GetSound() {std::cout << sound << '\n';}
-	void GetClass(){ std::cout << "I'm a dog" << std::endl; }
-
-	Dog(std::string, int, int,  std::string);
-	Dog() : Animal(){};
-	void ToString();
-};
-
-Dog::Dog(std::string name, int height, int weight,  std::string bark) : Animal( name,height, weight){
-	this->sound = bark;
-}
-void Dog::ToString(){
-	std::cout << this->GetName() << " is " << this->GetHeight()
-	<< "cms tall and " << this->GetWeight() << "kgs in weight and says "
-	<< this->sound <<  '\n';
-}
+// int Animal::numOfAnimals = 0;
+// void Animal::SetAll(std::string name, double height, double weight){
+//     this->height = height;
+// 	this->weight = weight;
+// 	this->name = name;
+// 	Animal::numOfAnimals++;
+// }
+// Animal::Animal(std::string name, double height, double weight){
+// 	this->height = height;
+// 	this->weight = weight;
+// 	this->name = name;
+// 	Animal::numOfAnimals++;
+// }
+// Animal::Animal(){
+//     this->height = 0;
+// 	this->weight = 0;
+// 	this->name = "";
+// 	Animal::numOfAnimals++;
+// }
+// Animal::~Animal(){
+// 	std::cout << "Animal " << this->name << " destoried" << '\n';
+// }
+// void Animal::ToString(){
+// 	std::cout << this->name << " is " << this->height
+// 	<< "cms tall and " << this->weight << "kgs in weight" <<  '\n';
+// }
 
 
-class GermanShepard : public Dog{
-public:
-		void getClass(){ std::cout << "I'm a German Shepard" << '\n';}
-		void getDerived(){ std::cout << "I'm a Animal and Dog" << '\n';}
-};
+// class Dog : public Animal{
+// private:
+// 	std::string sound = "Woof";
+
+// public:
+//     void MakeSound(){
+//         std::cout << "The dog " << this->GetName() << " says " << this->sound << std::endl;
+//     }
+// 	void GetSound() {std::cout << sound << '\n';}
+// 	void GetClass(){ std::cout << "I'm a dog" << std::endl; }
+
+// 	Dog(std::string, int, int,  std::string);
+// 	Dog() : Animal(){};
+// 	void ToString();
+// };
+
+// Dog::Dog(std::string name, int height, int weight,  std::string bark) : Animal( name,height, weight){
+// 	this->sound = bark;
+// }
+// void Dog::ToString(){
+// 	std::cout << this->GetName() << " is " << this->GetHeight()
+// 	<< "cms tall and " << this->GetWeight() << "kgs in weight and says "
+// 	<< this->sound <<  '\n';
+// }
+
+
+// class GermanShepard : public Dog{
+// public:
+// 		void getClass(){ std::cout << "I'm a German Shepard" << '\n';}
+// 		void getDerived(){ std::cout << "I'm a Animal and Dog" << '\n';}
+// };
 
 
 
@@ -494,12 +501,22 @@ int GetNumberOfMatches(std::vector<char> list, char valueToFind){
 int main(int argc, char** argv) {
 //    -------------------------------------------------------
 
+//    -------------------------------------------------------
 
 //    -------------------------------------------------------
-    std::vector<char> possibleValues{'H', 'T'};
-    std::vector<char> hAndTList = GetHAndTList(possibleValues, 100);
-    std::cout << "Number of heads : " << GetNumberOfMatches(hAndTList, 'H') << std::endl;
-    std::cout << "Number of heads : " << GetNumberOfMatches(hAndTList, 'T') << std::endl;
+    // std::cout << "Cicle Area : " << AREA_CICLE(5) << std::endl;
+
+//    -------------------------------------------------------
+
+    // Animal spot = Animal();
+    // spot.name = "Spot";
+    // std::cout << "The Animal is named " << spot.name << std::endl;
+
+//    -------------------------------------------------------
+    // std::vector<char> possibleValues{'H', 'T'};
+    // std::vector<char> hAndTList = GetHAndTList(possibleValues, 100);
+    // std::cout << "Number of heads : " << GetNumberOfMatches(hAndTList, 'H') << std::endl;
+    // std::cout << "Number of heads : " << GetNumberOfMatches(hAndTList, 'T') << std::endl;
 
 //    -------------------------------------------------------
     // std::vector<int> listOfNums {1,2,3,4,5};
