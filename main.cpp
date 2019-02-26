@@ -506,6 +506,22 @@ int GetNumberOfMatches(std::vector<char> list, char valueToFind){
         return val > val2 ? val : val2;
     }
 // ------------------------------------------------------------------------------------
+template<typename T, typename U>
+class Person{
+    public: 
+        T height;
+        U weight;
+        static int numOfPeople;
+        Person(T h, U w){
+            height = h, weight = w;
+            numOfPeople++;
+        }
+        void GetData(){
+            std::cout << "Height : " << height << "and Weight : " << weight << std::endl;
+
+        }
+};
+template<typename T, typename U> int Person<T, U> :: numOfPeople;
 
 // ------------------------------------------------------------------------------------
 
@@ -517,8 +533,36 @@ int GetNumberOfMatches(std::vector<char> list, char valueToFind){
  */
 int main(int argc, char** argv) {
 //    -------------------------------------------------------
+    std::vector<int> nums2 = {1,2,3,4};
+    std::vector<int>::iterator itr;
+    for(itr = nums2.begin();
+        itr < nums2.end();
+        itr++){
+            std::cout << *itr <<"\n";
+    }
+
+    std::vector<int>::iterator itr2 = nums2.begin();
+    advance(itr2, 2);
+    std::cout << *itr2 << std::endl;
+
+    auto itr3 = next(itr2, 1);
+    std::cout << *itr3 << std::endl;
+
+    auto itr4 = prev(itr2, 1);
+    std::cout << *itr4 << std::endl;
+
+    std::vector<int> nums3  = {1,4,5,6};
+    std::vector<int> nums4  = {2,3};
+    auto itr5  = nums3.begin();
+    advance(itr5, 1);
+    copy(nums4.begin(), nums4.end(), inserter(nums3, itr5));
+    for(int &i: nums3)
+        std::cout << i << std::endl;
 
 //    -------------------------------------------------------
+    // Person<double, int> mikeTyson(5.83, 216);
+    // mikeTyson.GetData();
+    // std::cout << "Number of People : " << mikeTyson.numOfPeople << std::endl;
 
 //    -------------------------------------------------------
     // std::cout << "Cicle Area : " << AREA_CICLE(5) << std::endl;
@@ -526,11 +570,11 @@ int main(int argc, char** argv) {
     // Times2(5);
     // Times2(5.3);
 
-    std::cout << "5 + 4 = " << Add(5,4) << std::endl;
-    std::cout << "5.5 + 4.6 = " << Add(5.5,4.6) << std::endl;
-    std::cout << "Max 4 or 8 = " << Max(4,8) << std::endl;
-    std::cout << "Max A or B = " << Max('A', 'B') << std::endl;
-    std::cout << "Max Dog or Cat = " << Max("Dog","Cat") << std::endl;
+    // std::cout << "5 + 4 = " << Add(5,4) << std::endl;
+    // std::cout << "5.5 + 4.6 = " << Add(5.5,4.6) << std::endl;
+    // std::cout << "Max 4 or 8 = " << Max(4,8) << std::endl;
+    // std::cout << "Max A or B = " << Max('A', 'B') << std::endl;
+    // std::cout << "Max Dog or Cat = " << Max("Dog","Cat") << std::endl;
 
 
 //    -------------------------------------------------------
